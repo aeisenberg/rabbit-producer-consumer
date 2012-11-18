@@ -1,3 +1,5 @@
+A simple pair of rabbitmq apps meant to run on Cloud Foundry.  The producer sends messages to the consumer. And the consumer uses websockets to synchronously display messages to the client.
+
 This is the source code for the UBC CS Alumni lecture: [What is this Cloud Thing?](https://www.cs.ubc.ca/event/2012/11/alumni-lecture-andrew-eisenberg-what-cloud-thing)
 
 This code comes with two apps, rabbit-producer and rabbit-consumer.  These applications each run a simple node server to and communicate using [rabbitmq](http://www.rabbitmq.com/).
