@@ -1,0 +1,11 @@
+{
+    "name":"rabbit-consumer",
+    "version":"0.0.1",
+    "dependencies": {
+        "amqp":">= 0.1.0",
+        "ws": "*",
+        "express": "3.0.0rc1",
+        "sanitizer": "*",
+        "sockjs": "*"
+    }
+}
