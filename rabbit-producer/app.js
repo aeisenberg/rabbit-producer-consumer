@@ -66,9 +66,8 @@ function httpServer(exchange) {
 			// when finished, push message to exchange
 			req.on('end', function() {
 				var msg = unescapeFormData(chunks.split('=')[1]);
-				exchange.publish('cf-queue', {
-					body: msg
-				});
+
+				// TODO Posting to exchange
 				
 				// all is good redirect back to home
 				res.statusCode = 303;
@@ -92,37 +91,7 @@ function setup() {
 		type: 'fanout',
 		durable: false
 	}, function() {
-
-		// Create queue after exchange is ready
-		var queue = conn.queue('cf-queue', {
-			// don't keep queue after app closes
-			durable: false 
-			
-		}, function() {
-			// subscribe to queue and get all messages pushed to it
-			// uncomment if you want the producer to consume its own messages
-//			queue.subscribe(function(msg) {
-//				messages.push(htmlEscape(msg.body));
-//				if (messages.length > 10) {
-//					messages.shift();
-//				}
-//			});
-			
-			queue.bind(exchange.name, 'cf-queue');
-		});
-		queue.on('queueBindOk', function() {
-			// once the connection, exchange, and queue are created,
-			// we can finally start our server
-			httpServer(exchange);
-		});
+		// TODO 1. create the queue and subscribe to it
 	});
 }
 conn.on('ready', setup);
-conn.on('closed', function() {
-	console.log("Conn closed");
-});
-conn.on('error', function(e) {
-	console.log("Conn error: " + JSON.stringify(e));
-});
-
-//http://www.rabbitmq.com/blog/2011/08/16/using-the-rabbitmq-service-on-cloud-foundry-with-nodejs/

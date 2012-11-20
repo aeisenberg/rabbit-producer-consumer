@@ -13,8 +13,9 @@ var path = process.env.PWD + '/public';
 var app = express();
 
 // use sockjs library to ensure compatibility across broswers and servers w/o websocket support
-var wsServer = sockjs.createServer({ jsessionid: true });
 var server = http.createServer(app);
+
+var wsServer ; // TODO 1. create the socket server
 
 app.configure(function() {
 	app.use(app.router);
@@ -24,7 +25,8 @@ app.configure(function() {
 		dumpExceptions: true,
 		showStack: true
 	}));
-	wsServer.installHandlers(server, { prefix: '/msg' });
+	
+	// TODO 3. install socket handlers
 });
 
 // Cloud Foundry-specific
@@ -55,20 +57,10 @@ function removeSocketConn(ws) {
 }
 
 function writeMessage(msg) {
-	for (var i = 0; i < socketConns.length; i++) {
-		// send the message to the client over the socket
-		socketConns[i].write(htmlEscape(msg.body));
-	}
+	// TODO 2. handle sending messages from queue to client
 }
 
-// listen for new socket connections
-wsServer.on('connection', function(ws) {
-	console.log('WS connection received: %s.', JSON.stringify(ws.address));
-	addSocketConn(ws);
-	ws.on('close', function() {
-		removeSocketConn(ws);
-	});
-});
+// TODO 4. listen for new socket connections
 
 
 ///////////////
