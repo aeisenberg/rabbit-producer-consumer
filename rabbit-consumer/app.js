@@ -57,10 +57,10 @@ function removeSocketConn(ws) {
 }
 
 function writeMessage(msg) {
-	// TODO 3. handle sending messages from queue to client
+	// TODO 4. handle sending messages from queue to client
 }
 
-// TODO 4. listen for new socket connections
+// TODO 3. listen for new socket connections
 
 
 ///////////////
