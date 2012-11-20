@@ -67,7 +67,7 @@ function httpServer(exchange) {
 			req.on('end', function() {
 				var msg = unescapeFormData(chunks.split('=')[1]);
 
-				// TODO Posting to exchange
+				// TODO 2. Posting to exchange
 				
 				// all is good redirect back to home
 				res.statusCode = 303;

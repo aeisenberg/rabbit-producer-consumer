@@ -26,7 +26,7 @@ app.configure(function() {
 		showStack: true
 	}));
 	
-	// TODO 3. install socket handlers
+	// TODO 2. install socket handlers
 });
 
 // Cloud Foundry-specific
@@ -57,7 +57,7 @@ function removeSocketConn(ws) {
 }
 
 function writeMessage(msg) {
-	// TODO 2. handle sending messages from queue to client
+	// TODO 3. handle sending messages from queue to client
 }
 
 // TODO 4. listen for new socket connections
